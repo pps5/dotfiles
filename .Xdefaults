@@ -1,0 +1,46 @@
+Xft.dpi:       140
+Xft.antialias: true
+Xft.rgba:      rgb
+Xft.hinting:   true
+Xft.hintstyle: hintslight
+
+!---------------------------
+! urxvt
+!---------------------------
+urxvt.depth:          32
+urxvt.geometry:       90x30
+urxvt.fading:	      0
+urxvt.internalBorder: 3
+urxvt.linespace:      0
+
+! extensions
+urxvt.perl-ext: default,matcher,xim-onthespot,resize-font
+
+! Fonts
+urxvt.allow_bold:     false
+urxvt.font: 	      xft:Inconsolata:antialias=true:size=10,\
+                      xft:Noto Emoji:antialias=true:size=16,\
+                      xft:IPAexGothic:antialias=true:size=16
+urxvt.letterSpace:    -1
+urxvt.resize-font.smaller: C-Down
+urxvt.resize-font.bigger: C-Up
+
+! Scrollbar
+urxvt.scrollStyle: rxvt
+urxvt.scrollBar:   false
+
+! Color
+urxvt.foreground: rgba:ffff/ffff/ffff/ffff
+urxvt.background: rgba:0000/0000/0000/bbbb
+
+! Fake transparent
+urxvt.transparent: true
+urxvt.shading: 30
+
+! Input method with inline
+urxvt.inputMethod: fcitx
+urxvt.preeditType: OnTheSpot
+
+! Clickable URL
+urxvt.url-launcher:   /usr/bin/xdg-open
+urxvt.matcher.button: 1

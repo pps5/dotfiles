@@ -1,0 +1,12 @@
+[user]
+    email = n2.jima@gmail.com
+    name = Naoki Nakajima
+
+[alias]
+    graph = log --graph --date=short
+    cm = commit
+    cmm = commit -m
+    st = status
+    co = checkout
+    br = branch
+    
