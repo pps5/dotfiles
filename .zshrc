@@ -83,15 +83,13 @@ alias ll="ls -l"
 alias lla="ls -al"
 alias cdp="cd ../"
 alias cdpp="cd ../../"
-# alias emacs="emacs -nw"
-alias emacs="emacsclient"
+alias emacs="emacs -nw"
+alias emacsc="emacsclient"
 alias cputemp="cat /sys/class/thermal/thermal_zone0/temp | cut -c 1-2"
 alias ssdtemp="telnet localhost 7634 &> /dev/null | grep /dev/sda"
 
 # GUI apps
 alias clip="xclip -sel clipboard"
-alias eog="eog &> /dev/null"
-alias evince="evince &> /dev/null"
 
 # screen
 alias hdmi="xrandr --output eDP1 --auto; xrandr --output HDMI1 --auto --above eDP1"
