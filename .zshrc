@@ -118,6 +118,7 @@ alias xss-stop="pgrep xss-lock | xargs kill &> /dev/null"
 # others
 alias git="hub"
 alias plantuml="java -jar /home/inab/Applications/plantuml.jar"
+alias octave="octave --no-gui"
 
 
 #------------------------------------------
@@ -140,3 +141,4 @@ eval "$(rbenv init -)"
 
 # emacs cask
 export PATH="/home/inab/.cask/bin:$PATH"
+export PATH=/home/inab/.gem/ruby/2.4.0/bin:$PATH
