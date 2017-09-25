@@ -2,10 +2,8 @@
 ;; Global
 ;;=======================
 ;; color theme
-(load-theme 'wombat t)
-
-;; transparency
-(add-to-list 'default-frame-alist '(alpha . (0.9 0.9)))
+;;(load-theme 'wombat t)
+(load-theme 'misterioso t)
 
 ;; line/column number mode
 (global-linum-mode t)
@@ -33,16 +31,17 @@
                     :background "lightgreen"
                     :foreground "black")
 
+
 ;;=======================
 ;; font settings
 ;;=======================
 (when (equal window-system 'nil)
-  (set-face-attribute 'default nil :family "Inconsolata" :height 120)
-  (set-fontset-font t 'japanese-jisx0208 (font-spec :family "Noto Sans Japanese")))
+  (set-face-attribute 'default nil :family "Ricty" :height 120)
+  (set-fontset-font t 'unicode (font-spec :family "Noto Emoji")))
+
 (when (equal window-system 'x)
-  (set-face-attribute 'default nil :family "Inconsolata" :height 160)
-  (set-fontset-font t 'japanese-jisx0208 (font-spec :family "Noto Sans Japanese")))
-(set-fontset-font t 'unicode (font-spec :family "Noto Emoji"))
+  (set-face-attribute 'default nil :family "Ricty" :height 160)
+  (set-fontset-font t 'unicode (font-spec :family "Noto Emoji")))
 
 
 ;;=======================
@@ -52,8 +51,8 @@
   (unless (display-graphic-p (selected-frame))
     (set-face-background 'default "unspecified-bg" (selected-frame))))
 (add-hook 'window-setup-hook 'on-after-init)
-;(set-frame-parameter (selected-frame) 'alpha '(85 . 50))
-;(add-to-list 'default-frame-alist '(alpha . (85 . 50)))
+(set-frame-parameter (selected-frame) 'alpha '(85 . 50))
+(add-to-list 'default-frame-alist '(alpha . (85 . 50)))
 
 ;;=======================
 ;; web-mode color

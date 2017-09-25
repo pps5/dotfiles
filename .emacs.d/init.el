@@ -137,14 +137,6 @@
 
 
 ;;=======================
-;; Java
-;;=======================
-(require `java-imports)
-(define-key java-mode-map (kbd "M-i") `java-imports-add-import)
-(add-hook 'java-mode-hook 'java-imports-scan-file)
-
-
-;;=======================
 ;; PHP
 ;;=======================
 (add-hook 'php-mode-hook
