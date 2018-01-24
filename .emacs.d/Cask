@@ -1,36 +1,57 @@
 (source gnu)
 (source melpa)
 
-(depends-on "auto-complete")
-(depends-on "bind-key")
+;; cask
 (depends-on "cask")
-(depends-on "dash")
-(depends-on "drag-stuff")
-(depends-on "emmet-mode")
-(depends-on "exec-path-from-shell")
-(depends-on "expand-region")
-(depends-on "f")
-(depends-on "flycheck")
-(depends-on "flycheck-cask")
-(depends-on "haskell-mode")
-(depends-on "helm")
-(depends-on "htmlize")
-(depends-on "idle-highlight-mode")
-(depends-on "jedi")
-(depends-on "lua-mode")
-(depends-on "magit")
-(depends-on "multiple-cursors")
-(depends-on "nyan-mode")
 (depends-on "pallet")
-(depends-on "popwin")
-(depends-on "prodigy")
+
+;; basics
+(depends-on "bind-key")
+(depends-on "company")
+(depends-on "expand-region")
+(depends-on "exec-path-from-shell")
+(depends-on "multiple-cursors")
 (depends-on "projectile")
-(depends-on "quickrun")
-(depends-on "s")
+(depends-on "use-package")
 (depends-on "smartparens")
 (depends-on "smartrep")
-(depends-on "smex")
-(depends-on "use-package")
-(depends-on "virtualenvwrapper")
-(depends-on "web-mode")
 (depends-on "yasnippet")
+
+;; Appearance
+(depends-on "all-the-icons")
+(depends-on "helm")
+(depends-on "idle-highlight-mode")
+(depends-on "highlight-indentation")
+(depends-on "indent-guide")
+(depends-on "popwin")
+(depends-on "powerline")
+(depends-on "rainbow-delimiters")
+
+;; flycheck
+(depends-on "flycheck")
+(depends-on "flycheck-cask")
+(depends-on "flycheck-rust")
+
+;; Python
+(depends-on "company-jedi")
+(depends-on "jedi-core")
+(depends-on "virtualenvwrapper")
+(depends-on "auto-virtualenvwrapper")
+
+;; Rust
+(depends-on "racer")
+(depends-on "rust-mode")
+
+;; Web
+(depends-on "emmet-mode")
+(depends-on "web-mode")
+
+;; language modes
+(depends-on "lua-mode")
+(depends-on "markdown-mode")
+
+;; others
+(depends-on "magit")
+(depends-on "neotree")
+(depends-on "multi-term")
+(depends-on "shell-pop")
