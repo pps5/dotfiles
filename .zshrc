@@ -60,8 +60,12 @@ local LIGHTBLUE=$'%{\e[38;5;39m%}'
 local DEFAULT=$'%{\e[1;m%}'
 
 # left/right prompts
-PROMPT=$LIGHTBLUE'[%n@%m]%# '$DEFAULT
-RPROMPT=$GREEN'[%~]'$DEFAULT
+if [ "$EMACS" ];then
+    PROMPT=$GREEN$'%d\n'$LIGHTBLUE'[%n@%m]%# '$DEFAULT
+else
+    PROMPT=$LIGHTBLUE'[%n@%m]%# '$DEFAULT
+    RPROMPT=$GREEN'[%~]'$DEFAULT
+fi
 setopt transient_rprompt
 
 
@@ -83,16 +87,17 @@ alias ll="ls -l"
 alias lla="ls -al"
 alias cdp="cd ../"
 alias cdpp="cd ../../"
-alias emacs="emacs -nw"
-alias emacsc="emacsclient"
+alias cemacs="emacs -nw"
+alias xemacs="emacs"
 alias cputemp="cat /sys/class/thermal/thermal_zone0/temp | cut -c 1-2"
 alias ssdtemp="telnet localhost 7634 &> /dev/null | grep /dev/sda"
 
 # GUI apps
 alias clip="xclip -sel clipboard"
+alias start="xdg-open"
 
 # screen
-alias hdmi="xrandr --output eDP1 --auto; xrandr --output HDMI1 --auto --above eDP1"
+alias hdmi="xrandr --output HDMI-1 --auto --above eDP-1"
 
 # adb
 alias pulldroid="adb pull /storage/sdcard0/Android/data/com.example.naoki.rssireader4/files/"
@@ -101,19 +106,11 @@ alias lsdroid="adb shell 'ls /storage/sdcard0/Android/data/com.example.naoki.rss
 
 # pyvenv
 alias venv="python3.6 -m venv"
-alias pyactivate="source ./env/bin/activate"
+alias pyactivate="source ./env/bin/activate || source ./.venv/bin/activate"
 
 # google-drive-ocamlfuse
 alias mount-gdrive="google-drive-ocamlfuse /home/inab/GoogleDrive"
 alias umount-gdrive="fusermount -u /home/inab/GoogleDrive"
-
-# mysql
-alias start-mysql="systemctl start mysqld.service"
-alias stop-mysql="systemctl stop mysqld.service"
-
-# xss-lock
-alias xss-start="(xss-lock -- xscreensaver-command -lock &)"
-alias xss-stop="pgrep xss-lock | xargs kill &> /dev/null"
 
 # others
 alias git="hub"
@@ -135,10 +132,16 @@ alias -g GI='| grep -i'
 #------------------------------------------
 # others
 #------------------------------------------
-# rbenv
-export PATH="$HOME/.rbenv/bin:$PATH"
-eval "$(rbenv init -)"
-
 # emacs cask
 export PATH="/home/inab/.cask/bin:$PATH"
 export PATH=/home/inab/.gem/ruby/2.4.0/bin:$PATH
+
+# JAVA HOME
+export JAVA_HOME="/usr/lib/jvm/$(archlinux-java get)"
+
+# rust
+source $HOME/.cargo/env
+
+xset b off
+
+source /usr/share/nvm/init-nvm.sh
