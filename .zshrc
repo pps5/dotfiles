@@ -55,26 +55,23 @@ setopt auto_param_slash
 autoload -U colors && colors
 autoload -Uz vcs_info
 setopt prompt_subst
-precmd() { echo ''; vcs_info }
+precmd() {
+    vcs_info;
+    if [ -z "$vcs_info_msg_0_" ]; then
+        GIT_BRANCH=''
+    else
+        GIT_BRANCH="[%F{red}${vcs_info_msg_0_}%f]"
+    fi
+}
 
-zstyle ':vcs_infogit:*' check-for-changes true
-zstyle ':vcs_infogit:*' unstagedstr '!'
-zstyle ':vcs_infogit:*' stagedstr '%F{red}+'
-zstyle ':vcs_info:*' formats ' %c%u%s:%b '
-zstyle ':vcs_info:*' actionformats ' %c%u%s:%b|%a '
-
-local SEPARATOR=$'\ue0b0 '
-local GIT_ICON=$'\ue0a0 '
-local PROMPT_ICON=$'\ue0b1 '
-
-local USER_AND_HOST='%K{red}%F{white} %n@%m %f%k'
-local SEPARATOR1=$'%K{yellow}%F{red}${SEPARATOR}%f%k'
-local VCS_INFO='%K{yellow}%F{black}${GIT_ICON}${vcs_info_msg_0_}%f%k'
-local SEPARATOR2=$'%K{magenta}%F{yellow}${SEPARATOR}%f%k'
-local CURRENT_DIRECTORY='%K{magenta}%F{black} %~ %f%k'
-local SEPARATOR3=$'%F{magenta}${SEPARATOR}%f'
-PROMPT="${USER_AND_HOST}${SEPARATOR1}${VCS_INFO}${SEPARATOR2}${CURRENT_DIRECTORY}${SEPARATOR3}
-> "
+zstyle ':vcs_info:git:*' check-for-changes true
+zstyle ':vcs_info:git:*' stagedstr '!'
+zstyle ':vcs_info:git:*' unstagedstr '+'
+zstyle ':vcs_info:*' formats '%c%u%b'
+zstyle ':vcs_info:*' actionformats '%c%u%b|%a'
+PROMPT=$'
+[%F{cyan}%n@%m%f %*] $GIT_BRANCH %(5~,%-2~/.../%2~,%~)
+%F{red}>%f%F{magenta}>%f%F{yellow}>%f%F{green}>%f '
 
 #------------------------------------------
 # Aliases
