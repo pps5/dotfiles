@@ -26,32 +26,24 @@
 (depends-on "popwin")
 (depends-on "powerline")
 (depends-on "rainbow-delimiters")
+(depends-on "nord-theme")
+(depends-on "treemacs")
 
 ;; flycheck
 (depends-on "flycheck")
 (depends-on "flycheck-cask")
 (depends-on "flycheck-rust")
 
-;; Python
-(depends-on "company-jedi")
-(depends-on "jedi-core")
-(depends-on "virtualenvwrapper")
-(depends-on "auto-virtualenvwrapper")
-
-;; Rust
-(depends-on "racer")
-(depends-on "rust-mode")
-
 ;; Web
 (depends-on "emmet-mode")
 (depends-on "web-mode")
 
-;; language modes
-(depends-on "lua-mode")
-(depends-on "markdown-mode")
+;; typescript
+(depends-on "tide")
+(depends-on "typescript-mode")
 
 ;; others
 (depends-on "magit")
-(depends-on "neotree")
 (depends-on "multi-term")
 (depends-on "shell-pop")
+(depends-on "markdown-mode")

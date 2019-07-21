@@ -9,24 +9,14 @@
              (lambda ()
                '("melpa-stable" . "https://stable.melpa.org/packages/") t
                '("melpa" . "https://melpa.org/packages/") t))
-(add-to-list 'custom-theme-load-path "~/.emacs.d/atom-one-dark-theme/")
 
 ;;=======================
 ;; load
 ;;=======================
 ;; load cask
 ;;(package-initialize)
-(require 'cask "~/.cask/cask.el")
+(require 'cask "/usr/share/cask/cask.el")
 (cask-initialize)
-
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(package-selected-packages
-   (quote
-    (edit-indirect ein auto-virtualenv virtualenvwrapper yasnippet web-mode use-package smex smartrep smartparens projectile prodigy popwin pallet nyan-mode multiple-cursors magit lua-mode idle-highlight-mode htmlize flycheck-cask expand-region exec-path-from-shell emmet-mode drag-stuff auto-complete))))
 
 ;;=======================
 ;; misc settings
@@ -79,13 +69,16 @@
 ;; add final new line if no line
 (setq require-final-newline t)
 
+;; enable mouse
+(xterm-mouse-mode t)
+
 ;;=======================
 ;; Appearance
 ;;=======================
 ;;load theme
-(if (display-graphic-p)
-    (progn (load-theme 'atom-one-dark t)) ; x11
-  (load-theme 'wombat t)) ; console
+(load-theme 'nord t)
+(set-face-foreground 'font-lock-comment-face "#98a1b5")
+(set-face-foreground 'font-lock-comment-delimiter-face "#98a1b5")
 
 ;; line/column number mode
 (global-linum-mode t)
@@ -111,10 +104,10 @@
 (set-face-attribute 'helm-selection nil
                     :background "lightgreen"
                     :foreground "black")
+(setq helm-use-frame-when-more-than-two-windows nil)
 
 ;; font settings
-(set-face-attribute 'default nil :family "Ricty" :height 125)
-(set-fontset-font t 'unicode (font-spec :family "Noto Emoji"))
+(set-face-attribute 'default nil :family "Cica" :height 100)
 
 ;; web-mode bracket color
 (add-hook 'web-mode-hook
@@ -132,7 +125,8 @@
 ;; indent-guide
 (require 'indent-guide)
 (indent-guide-global-mode)
-(set-face-background 'indent-guide-face "color-200")
+(set-face-background 'indent-guide-face nil)
+(set-face-foreground 'indent-guide-face "white")
 (setq indent-guide-delay 0)
 (setq indent-guide-char "|")
 
@@ -213,27 +207,11 @@
             (setq c-basic-offset 4)))
 
 ;;=======================
-;; Python
-;;=======================
-(require 'virtualenvwrapper)
-(require 'auto-virtualenvwrapper)
-(add-hook 'python-mode-hook #'auto-virtualenvwrapper-activate)
-(add-to-list 'company-backends 'company-jedi)
-(add-hook 'python-mode-hook
-          '(lambda()
-            (setq flycheck-checker 'python-pylint
-                  flycheck-checker-error-threshold 900
-                  flycheck-pylintrc "~/.pylintrc")
-            'jedi:setup
-            (setq-default show-trailing-whitespace t)))
-
-;;=======================
-;; HTML, CSS
+;; HTML, CSS, JavaScript
 ;;=======================
 (add-to-list 'auto-mode-alist '("\\.html\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.tag\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.php\\'" . web-mode))
-(add-to-list 'auto-mode-alist '("\\.jsp\\'" . web-mode))
 
 ;; emmet settings
 (require 'emmet-mode)
@@ -243,40 +221,32 @@
           (lambda()
             (setq web-mode-markup-indent-offset 2)
             (emmet-mode t)))
+;; js-mode indent
+(add-hook 'js-mode-hook
+          (lambda ()
+            (make-local-variable 'js-indent-level)
+            (setq js-indent-level 2)))
 
 ;;=======================
-;; Rust
+;; TypeScript
 ;;=======================
-(require 'rust-mode)
-(require 'racer)
-(add-to-list 'exec-path (expand-file-name "~/.cargo/bin/"))
-(eval-after-load "rust-mode"
-  '(setq-default rust-format-on-save t))
-(add-hook 'rust-mode-hook (lambda ()
-                           (racer-mode)
-                           (flycheck-rust-setup)))
-(add-hook 'racer-mode-hook #'eldoc-mode)
-(add-hook 'racer-mode-hook (lambda ()
-                             (set (make-variable-buffer-local 'company-idle-delay) 0.5)
-                             (set (make-variable-buffer-local 'company-minimum-prefix-length) 2)))
+(require 'tide)
+(setq typescript-indent-level 2)
+(add-hook 'typescript-mode-hook
+          (lambda ()
+            (interactive)
+            (tide-setup)
+            (flycheck-mode t)
+            (setq flycheck-check-syntax-automatically '(save mode-enabled))
+            (eldoc-mode t)
+            (tide-hl-identifier-mode t)
+            (company-mode t)))
 
 ;;=======================
-;; neotree
+;; treemacs
 ;;=======================
+(require 'treemacs)
 (require 'all-the-icons)
-(require 'neotree)
-(setq neo-show-hidden-files t)
-(setq neo-create-file-auto-open t)
-(setq neo-persist-show t)
-(setq neo-keymap-style 'concise)
-(setq neo-smart-open t)
-(global-set-key [f8] 'neotree-toggle)
-(when neo-persist-show
-  (add-hook 'popwin:before-popup-hook
-            (lambda () (setq neo-persist-show nil)))
-  (add-hook 'popwin:after-popup-hook
-            (lambda () (setq neo-persist-show t))))
-(setq neo-theme (if (display-graphic-p) 'icons 'arrows))
 
 ;;=======================
 ;; shell pop
@@ -294,6 +264,9 @@
 ;; windmove
 ;;=======================
 (setq windmove-wrap-around t)
-(windmove-default-keybindings)
+(global-set-key (kbd "C-c h") 'windmove-left)
+(global-set-key (kbd "C-c j") 'windmove-down)
+(global-set-key (kbd "C-c k") 'windmove-up)
+(global-set-key (kbd "C-c l") 'windmove-right)
 
 ;;; init.el ends here
