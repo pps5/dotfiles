@@ -264,4 +264,15 @@
 (global-set-key (kbd "C-c k") 'windmove-up)
 (global-set-key (kbd "C-c l") 'windmove-right)
 
+;;=======================
+;; review-mode
+;;=======================
+(require 'review-mode "~/.emacs.d/review-mode.el")
+(add-to-list 'auto-mode-alist '("\\.re\\'" . review-mode))
+(set-face-foreground 'review-mode-title-face "white")
+(set-face-foreground 'review-mode-header1-face "white")
+(set-face-foreground 'review-mode-header2-face "white")
+(set-face-foreground 'review-mode-header3-face "white")
+(set-face-foreground 'review-mode-header4-face "white")
+
 ;;; init.el ends here
