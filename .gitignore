@@ -1,0 +1,10 @@
+.resentf
+.mc-lists.el
+.projectile-bookmarks*
+.cache
+.cask
+kkcrc
+elpa
+
+*vrepl*
+*vrepl_temp*
