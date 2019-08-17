@@ -19,7 +19,8 @@
 
 ;; Appearance
 (depends-on "all-the-icons")
-(depends-on "helm")
+(depends-on "swiper")
+(depends-on "counsel")
 (depends-on "idle-highlight-mode")
 (depends-on "highlight-indentation")
 (depends-on "indent-guide")

@@ -99,13 +99,6 @@
 (tool-bar-mode 0)
 (scroll-bar-mode -1)
 
-;; helm color
-(require 'helm)
-(set-face-attribute 'helm-selection nil
-                    :background "lightgreen"
-                    :foreground "black")
-(setq helm-use-frame-when-more-than-two-windows nil)
-
 ;; font settings
 (set-face-attribute 'default nil :family "Cica" :height 100)
 
@@ -191,12 +184,14 @@
 (setq company-selection-wrap-around t)
 
 ;;=======================
-;; helm
+;; Swiper
 ;;=======================
-(require 'helm)
-(helm-mode t)
-(global-set-key (kbd "M-x") 'helm-M-x)
-(global-set-key (kbd "C-x C-f") 'helm-find-files)
+(setq ivy-mode 1)
+(setq ivy-use-virtual-buffers t)
+(setq enable-recursive-minubuffers t)
+(global-set-key "\C-s" 'swiper)
+(global-set-key (kbd "M-x") 'counsel-M-x)
+(global-set-key (kbd "C-x C-f") 'counsel-find-file)
 
 ;;=======================
 ;; PHP
