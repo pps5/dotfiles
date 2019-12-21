@@ -9,10 +9,18 @@ export PATH=/home/inab/.gem/ruby/2.4.0/bin:$PATH
 # JAVA HOME
 export JAVA_HOME="/usr/lib/jvm/$(archlinux-java get)"
 # nvm
-source /usr/share/nvm/init-nvm.sh
+source $HOME/.nvm/nvm.sh
 export PATH=/home/inab/Applications/flutter/bin:$PATH
-# rust
-export PATH="$HOME/.cargo/bin:$PATH"
+# local bin
+export PATH=/home/inab/bin:$PATH
+# adbw
+export PATH=/home/inab/Applications/scripts/adbw:$PATH
+# cargo
+export PATH=$PATH:$HOME/.cargo/env
+# yarn
+export PATH=$PATH:$(yarn global bin)
+# flutter
+export PATH=$PATH:/home/inab/flutter/bin
 
 #------------------------------------------
 # History
@@ -95,6 +103,7 @@ alias -g T='| tail'
 alias -g M='| more'
 alias -g G='| grep'
 alias -g GI='| grep -i'
+alias -g P='| peco'
 
 #------------------------------------------
 # others
@@ -103,3 +112,11 @@ alias -g GI='| grep -i'
 unsetopt correctall
 # bell
 xset b off
+# trackpoint speed
+xinput set-prop "TPPS/2 Elan TrackPoint" "libinput Accel Speed" -0.35
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/home/inab/tmp/google-cloud-sdk/path.zsh.inc' ]; then . '/home/inab/tmp/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/home/inab/tmp/google-cloud-sdk/completion.zsh.inc' ]; then . '/home/inab/tmp/google-cloud-sdk/completion.zsh.inc'; fi

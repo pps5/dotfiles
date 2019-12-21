@@ -182,6 +182,7 @@
 (global-company-mode +1)
 (setq company-minimum-prefix-length 1)
 (setq company-selection-wrap-around t)
+(setq company-dabbrev-downcase nil)
 
 ;;=======================
 ;; Swiper
@@ -249,11 +250,22 @@
 (require 'shell-pop)
 (add-hook 'term-mode-hook (lambda () (setq show-trailing-whitespace nil)))
 (custom-set-variables
- '(shell-pop-shell-type (quote ("ansi-term" "*shell-pop-ansi-term*" (lambda nil (ansi-term shell-pop-term-shell)))))
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(package-selected-packages
+   (quote
+    (htmlize ox-reveal kotlin-mode yasnippet which-key web-mode vue-mode use-package treemacs tide swift-mode smartrep smartparens shell-pop rainbow-delimiters racer projectile powerline popwin pallet nord-theme neotree multiple-cursors multi-term markdown-mode magit lua-mode indent-guide idle-highlight-mode highlight-indentation helm flycheck-rust flycheck-cask expand-region exec-path-from-shell emmet-mode elm-mode counsel company-jedi company-box auto-virtualenvwrapper all-the-icons)))
+ '(shell-pop-shell-type
+   (quote
+    ("ansi-term" "*shell-pop-ansi-term*"
+     (lambda nil
+       (ansi-term shell-pop-term-shell)))))
  '(shell-pop-term-shell "/bin/zsh")
  '(shell-pop-universal-key "C-`")
- '(shell-pop-window-height 40)
- '(shell-pop-window-position "bottom"))
+ '(shell-pop-window-position "bottom")
+ '(shell-pop-window-size 40))
 
 ;;=======================
 ;; windmove
@@ -276,3 +288,24 @@
 (set-face-foreground 'review-mode-header4-face "white")
 
 ;;; init.el ends here
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
+;;=======================
+;; rust
+;;=======================
+(add-to-list 'exec-path (expand-file-name "~/.cargo/bin"))
+(eval-after-load "rust-mode"
+  '(setq-default rust-format-on-save t))
+  (add-hook 'flycheck-mode-hook #'flycheck-rust-setup))
+(add-hook 'rust-mode-hook (lambda ()
+                            (racer-mode)
+                            (flycheck-rust-setup)))
+(add-hook 'racer-mode-hook #'eldoc-mode)
+(add-hook 'racer-mode-hook (lambda ()
+                             (company-mode
+                              (set (make-variable-buffer-local 'company-idle-delay) 0.1)
+                              (set (make-variable-buffer-local 'company-minimum-prefix-length) 0))))

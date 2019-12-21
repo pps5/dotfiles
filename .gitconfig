@@ -6,7 +6,14 @@
     graph = log --graph --date=short
     cm = commit
     cmm = commit -m
+    cma = commit --amend
     st = status
     co = checkout
+    diffc = diff --cached
     br = branch
-    
+    [credential]
+
+[credential]
+	helper = /usr/lib/git-core/git-credential-gnome-keyring
+[core]
+	editor = vim

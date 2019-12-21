@@ -43,8 +43,13 @@
 (depends-on "tide")
 (depends-on "typescript-mode")
 
+;; rust
+(depends-on "rust-mode")
+(depends-on "racer")
+
 ;; others
 (depends-on "magit")
 (depends-on "multi-term")
 (depends-on "shell-pop")
 (depends-on "markdown-mode")
+(depends-on "swift-mode")
