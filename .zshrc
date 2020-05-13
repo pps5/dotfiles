@@ -5,22 +5,12 @@
 export PATH=$PATH:./node_modules/.bin
 # emacs cask
 export PATH="/home/inab/.cask/bin:$PATH"
-export PATH=/home/inab/.gem/ruby/2.4.0/bin:$PATH
-# JAVA HOME
-export JAVA_HOME="/usr/lib/jvm/$(archlinux-java get)"
-# nvm
-source $HOME/.nvm/nvm.sh
-export PATH=/home/inab/Applications/flutter/bin:$PATH
 # local bin
 export PATH=/home/inab/bin:$PATH
-# adbw
-export PATH=/home/inab/Applications/scripts/adbw:$PATH
 # cargo
 export PATH=$PATH:$HOME/.cargo/env
 # yarn
 export PATH=$PATH:$(yarn global bin)
-# flutter
-export PATH=$PATH:/home/inab/flutter/bin
 
 #------------------------------------------
 # History
@@ -93,9 +83,7 @@ alias cdp="cd ../"
 alias cdpp="cd ../../"
 alias git="hub"
 # gui
-alias clip="xclip -sel clipboard"
 alias open="xdg-open"
-alias hdmi="xrandr --output HDMI-1 --auto --above eDP-1"
 # Global aliases
 alias -g L='| less'
 alias -g H='| head'
@@ -112,11 +100,3 @@ alias -g P='| peco'
 unsetopt correctall
 # bell
 xset b off
-# trackpoint speed
-xinput set-prop "TPPS/2 Elan TrackPoint" "libinput Accel Speed" -0.35
-
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f '/home/inab/tmp/google-cloud-sdk/path.zsh.inc' ]; then . '/home/inab/tmp/google-cloud-sdk/path.zsh.inc'; fi
-
-# The next line enables shell command completion for gcloud.
-if [ -f '/home/inab/tmp/google-cloud-sdk/completion.zsh.inc' ]; then . '/home/inab/tmp/google-cloud-sdk/completion.zsh.inc'; fi

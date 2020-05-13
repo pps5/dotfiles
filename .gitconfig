@@ -11,9 +11,9 @@
     co = checkout
     diffc = diff --cached
     br = branch
-    [credential]
 
 [credential]
-	helper = /usr/lib/git-core/git-credential-gnome-keyring
+    helper = /usr/lib/git-core/git-credential-gnome-keyring
+
 [core]
 	editor = vim
