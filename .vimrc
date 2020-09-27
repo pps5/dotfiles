@@ -8,15 +8,22 @@ call vundle#begin()
 
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'arcticicestudio/nord-vim'
-Plugin 'Shougo/unite.vim'
-Plugin 'Shougo/neomru.vim'
 Plugin 'scrooloose/nerdtree'
 Plugin 'bronson/vim-trailing-whitespace'
-Plugin 'vim-scripts/fcitx.vim'
+Plugin 'lilydjwg/fcitx.vim'
 Plugin 'godlygeek/tabular'
-Plugin 'plasticboy/vim-markdown'
+Plugin 'airblade/vim-gitgutter'
+
+" lsp and completion
+Plugin 'prabirshrestha/async.vim'
+Plugin 'prabirshrestha/vim-lsp'
+Plugin 'prabirshrestha/asyncomplete.vim'
+Plugin 'prabirshrestha/asyncomplete-lsp.vim'
+Plugin 'mattn/vim-lsp-settings'
+
+" lang
 Plugin 'rust-lang/rust.vim'
-Plugin 'racer-rust/vim-racer'
+Plugin 'plasticboy/vim-markdown'
 
 call vundle#end()
 filetype plugin indent on
@@ -32,6 +39,8 @@ set hidden
 set showcmd
 set clipboard=unnamed
 autocmd BufWritePre * :FixWhitespace
+
+cnoremap <c-x> <c-r>=expand('%:p')<cr>
 
 """"""""""""""""""""""
 " UI
@@ -67,25 +76,6 @@ set wrapscan
 set hlsearch
 nmap <Esc><Esc> :nohlsearch<CR><ESC>
 
-"""""""""""""""""""""
-" Search
-""""""""""""""""""""""
-let g:unite_enable_start_insert=1
-noremap <C-P> :Unite buffer<CR>
-noremap <C-N> :Unite -buffer-name=file file<CR>
-
-" split holizontal
-au FileType unite nnoremap <silent> <buffer> <expr> <C-J> unite#do_action('split')
-au FileType unite inoremap <silent> <buffer> <expr> <C-J> unite#do_action('split')
-
-" split vertical
-au FileType unite nnoremap <silent> <buffer> <expr> <C-K> unite#do_action('vsplit')
-au FileType unite inoremap <silent> <buffer> <expr> <C-K> unite#do_action('vsplit')
-
-" exit on escape twice
-au FileType unite nnoremap <silent> <buffer> <ESC><ESC> :q<CR>
-au FileType unite inoremap <silent> <buffer> <ESC><ESC> <ESC>:q<CR>
-
 """"""""""""""""""""""
 " Restore cursor position
 """"""""""""""""""""""
@@ -99,6 +89,11 @@ endif
 """"""""""""""""""""""
 " Rust
 """"""""""""""""""""""
-set hidden
-let g:racer_cmd = '~/.cargo/bin/racer'
-let g:racer_experimental_compiler = 1
+let g:asyncomplete_auto_popup = 1
+let g:lsp_virtual_text_enabled = 0
+let g:lsp_diagnostics_echo_cursor = 1
+let g:rustfmt_autosave = 1
+
+noremap <silent> <M-n> :LspNextDiagnostic<CR>
+noremap <silent> <M-p> :LspPreviousDiagnostic<CR>
+
