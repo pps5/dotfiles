@@ -2,11 +2,9 @@
 # PATH
 #------------------------------------------
 # local installed node-modules
-export PATH=$PATH:./node_modules/.bin
+export PATH=$PATH:./node_modules/.bin:
 # emacs cask
 export PATH="/home/inab/.cask/bin:$PATH"
-# local bin
-export PATH=/home/inab/bin:$PATH
 # cargo
 export PATH=$PATH:$HOME/.cargo/env
 # yarn
@@ -58,7 +56,7 @@ precmd() {
     if [ -z "$vcs_info_msg_0_" ]; then
         GIT_BRANCH=''
     else
-        GIT_BRANCH="[%F{red}${vcs_info_msg_0_}%f]"
+        GIT_BRANCH="%F{red}:${vcs_info_msg_0_}%f"
     fi
 }
 
@@ -68,8 +66,8 @@ zstyle ':vcs_info:git:*' unstagedstr '+'
 zstyle ':vcs_info:*' formats '%c%u%b'
 zstyle ':vcs_info:*' actionformats '%c%u%b|%a'
 PROMPT=$'
-[%F{cyan}%n@%m%f %*] $GIT_BRANCH %(5~,%-2~/.../%2~,%~)
-%F{red}>%f%F{magenta}>%f%F{yellow}>%f%F{green}>%f '
+[%F{cyan}%n@%m%f] %(5~,%-2~/.../%2~,%~$GIT_BRANCH)
+%F{red}>>>>%f '
 
 #------------------------------------------
 # Aliases
@@ -100,3 +98,6 @@ alias -g P='| peco'
 unsetopt correctall
 # bell
 xset b off
+# reset keybind
+bindkey -e
+
