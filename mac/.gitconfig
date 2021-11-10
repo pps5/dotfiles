@@ -1,0 +1,18 @@
+[user]
+    email = n2.jima@gmail.com
+    name = Naoki Nakajima
+
+[alias]
+    graph = log --graph --date=short
+    addp = add -p
+    cm = commit
+    cmm = commit -m
+    cma = commit --amend
+    st = status
+    co = checkout
+    diffc = diff --cached
+    br = branch
+
+[core]
+    editor = nvim
+

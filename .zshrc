@@ -2,11 +2,7 @@
 # PATH
 #------------------------------------------
 # local installed node-modules
-export PATH=$PATH:./node_modules/.bin:
-# emacs cask
-export PATH="/home/inab/.cask/bin:$PATH"
-# cargo
-export PATH=$PATH:$HOME/.cargo/env
+export PATH=$PATH:./node_modules/.bin
 # yarn
 export PATH=$PATH:$(yarn global bin)
 
@@ -79,9 +75,7 @@ alias ll="ls -l"
 alias lla="ls -al"
 alias cdp="cd ../"
 alias cdpp="cd ../../"
-alias git="hub"
-# gui
-alias open="xdg-open"
+
 # Global aliases
 alias -g L='| less'
 alias -g H='| head'
@@ -96,8 +90,6 @@ alias -g P='| peco'
 #------------------------------------------
 # disable spell check
 unsetopt correctall
-# bell
-xset b off
 # reset keybind
 bindkey -e
 
