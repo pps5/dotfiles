@@ -4,7 +4,13 @@
 # local installed node-modules
 export PATH=$PATH:./node_modules/.bin
 # yarn
-export PATH=$PATH:$(yarn global bin)
+if command -v yarn > /dev/null 2>&1; then
+    export PATH=$PATH:$(yarn global bin)
+fi
+
+if [ $(uname) = 'Darwin' ]; then
+    export PATH=$PATH:$HOME/Library/Android/sdk/platform-tools/
+fi
 
 #------------------------------------------
 # History
@@ -83,7 +89,6 @@ alias -g T='| tail'
 alias -g M='| more'
 alias -g G='| grep'
 alias -g GI='| grep -i'
-alias -g P='| peco'
 
 #------------------------------------------
 # others
@@ -92,4 +97,8 @@ alias -g P='| peco'
 unsetopt correctall
 # reset keybind
 bindkey -e
+
+if command -v anyenv > /dev/null 2>&1; then
+    eval "$(anyenv init -)"
+fi
 

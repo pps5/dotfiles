@@ -3,14 +3,13 @@
 """"""""""""""""""""""
 set nocompatible
 filetype off
-set rtp+=~/.vim/bundle/Vundle.vim
+set rtp+=~/.config/nvim/bundle/Vundle.vim
 call vundle#begin()
 
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'arcticicestudio/nord-vim'
 Plugin 'scrooloose/nerdtree'
 Plugin 'bronson/vim-trailing-whitespace'
-Plugin 'lilydjwg/fcitx.vim'
 Plugin 'godlygeek/tabular'
 Plugin 'airblade/vim-gitgutter'
 
