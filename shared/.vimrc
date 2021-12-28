@@ -11,14 +11,9 @@ Plug 'scrooloose/nerdtree'
 Plug 'bronson/vim-trailing-whitespace'
 Plug 'godlygeek/tabular'
 Plug 'airblade/vim-gitgutter'
-" lsp and completion
-Plug 'prabirshrestha/async.vim'
-Plug 'prabirshrestha/vim-lsp'
-Plug 'prabirshrestha/asyncomplete.vim'
-Plug 'prabirshrestha/asyncomplete-lsp.vim'
-Plug 'mattn/vim-lsp-settings'
 
 " lang
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'rust-lang/rust.vim'
 Plug 'plasticboy/vim-markdown'
 
@@ -82,15 +77,4 @@ if has ("autocmd")
         \    exe "normal! g'\"" |
         \ endif
 endif
-
-""""""""""""""""""""""
-" Rust
-""""""""""""""""""""""
-let g:asyncomplete_auto_popup = 1
-let g:lsp_virtual_text_enabled = 0
-let g:lsp_diagnostics_echo_cursor = 1
-let g:rustfmt_autosave = 1
-
-noremap <silent> <M-n> :LspNextDiagnostic<CR>
-noremap <silent> <M-p> :LspPreviousDiagnostic<CR>
 
