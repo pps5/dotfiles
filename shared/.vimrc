@@ -7,6 +7,7 @@ set rtp+=~/.config/nvim/autoload/
 call plug#begin('~/.config/nvim/plugged')
 
 Plug 'arcticicestudio/nord-vim'
+Plug 'sainnhe/gruvbox-material'
 Plug 'scrooloose/nerdtree'
 Plug 'bronson/vim-trailing-whitespace'
 Plug 'godlygeek/tabular'
@@ -43,7 +44,7 @@ set smartindent
 set showmatch
 set laststatus=2
 set wildmode=list:longest
-colorscheme nord
+colorscheme gruvbox-material
 syntax enable
 
 """"""""""""""""""""""
