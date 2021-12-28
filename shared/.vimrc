@@ -1,30 +1,28 @@
 """"""""""""""""""""""
-" Vundle
+" vim-plug
 """"""""""""""""""""""
 set nocompatible
 filetype off
-set rtp+=~/.config/nvim/bundle/Vundle.vim
-call vundle#begin()
+set rtp+=~/.config/nvim/autoload/
+call plug#begin('~/.config/nvim/plugged')
 
-Plugin 'VundleVim/Vundle.vim'
-Plugin 'arcticicestudio/nord-vim'
-Plugin 'scrooloose/nerdtree'
-Plugin 'bronson/vim-trailing-whitespace'
-Plugin 'godlygeek/tabular'
-Plugin 'airblade/vim-gitgutter'
-
+Plug 'arcticicestudio/nord-vim'
+Plug 'scrooloose/nerdtree'
+Plug 'bronson/vim-trailing-whitespace'
+Plug 'godlygeek/tabular'
+Plug 'airblade/vim-gitgutter'
 " lsp and completion
-Plugin 'prabirshrestha/async.vim'
-Plugin 'prabirshrestha/vim-lsp'
-Plugin 'prabirshrestha/asyncomplete.vim'
-Plugin 'prabirshrestha/asyncomplete-lsp.vim'
-Plugin 'mattn/vim-lsp-settings'
+Plug 'prabirshrestha/async.vim'
+Plug 'prabirshrestha/vim-lsp'
+Plug 'prabirshrestha/asyncomplete.vim'
+Plug 'prabirshrestha/asyncomplete-lsp.vim'
+Plug 'mattn/vim-lsp-settings'
 
 " lang
-Plugin 'rust-lang/rust.vim'
-Plugin 'plasticboy/vim-markdown'
+Plug 'rust-lang/rust.vim'
+Plug 'plasticboy/vim-markdown'
 
-call vundle#end()
+call plug#end()
 filetype plugin indent on
 
 """"""""""""""""""""""

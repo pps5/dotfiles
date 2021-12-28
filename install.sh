@@ -22,9 +22,9 @@ fi
 mkdir -p $HOME/.config/nvim
 ln -snf $DOTFILES/shared/.vimrc $HOME/.config/nvim/init.vim
 
-git clone https://github.com/VundleVim/Vundle.vim.git \
-    $HOME/.config/nvim/bundle/Vundle.vim
-nvim +PluginInstall +qall
+curl -fLo $HOME/.config/nvim/autoload/plug.vim --create-dirs \
+    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+nvim +PlugInstall +qall
 
 # gitconfig
 zsh $DOTFILES/gitconfig.sh
