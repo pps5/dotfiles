@@ -102,3 +102,5 @@ if command -v anyenv > /dev/null 2>&1; then
     eval "$(anyenv init -)"
 fi
 
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

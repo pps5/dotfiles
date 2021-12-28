@@ -11,7 +11,7 @@ Plug 'sainnhe/gruvbox-material'
 Plug 'scrooloose/nerdtree'
 Plug 'bronson/vim-trailing-whitespace'
 Plug 'godlygeek/tabular'
-Plug 'airblade/vim-gitgutter'
+Plug 'junegunn/fzf', {'dir': '~/.fzf_bin', 'do': './install --all'}
 
 " lang
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -78,4 +78,33 @@ if has ("autocmd")
         \    exe "normal! g'\"" |
         \ endif
 endif
+
+""""""""""""""""""""""
+" coc.nvim
+""""""""""""""""""""""
+let g:coc_global_extensions = ['coc-git', 'coc-fzf-preview', 'coc-lists']
+
+let g:mapleader = "\<Space>"
+nnoremap [ff]     <Nop>
+xnoremap [ff]     <Nop>
+nmap     z        [ff]
+xmap     z        [ff]
+
+""""""""""""""""""""""
+" fzf-preview
+""""""""""""""""""""""
+
+nnoremap <silent> <C-p>  :<C-u>CocCommand fzf-preview.FromResources buffer project_mru project<CR>
+nnoremap <silent> [ff]s  :<C-u>CocCommand fzf-preview.GitStatus<CR>
+nnoremap <silent> [ff]gg :<C-u>CocCommand fzf-preview.GitActions<CR>
+nnoremap <silent> [ff]b  :<C-u>CocCommand fzf-preview.Buffers<CR>
+nnoremap          [ff]f  :<C-u>CocCommand fzf-preview.ProjectGrep --add-fzf-arg=--exact --add-fzf-arg=--no-sort<Space>
+xnoremap          [ff]f  "sy:CocCommand fzf-preview.ProjectGrep --add-fzf-arg=--exact --add-fzf-arg=--no-sort<Space>-F<Space>"<C-r>=substitute(substitute(@s, '\n', '', 'g'), '/', '\\/', 'g')<CR>"
+
+nnoremap <silent> [ff]q  :<C-u>CocCommand fzf-preview.CocCurrentDiagnostics<CR>
+nnoremap <silent> [ff]r  :<C-u>CocCommand fzf-preview.CocReferences<CR>
+nnoremap <silent> [ff]d  :<C-u>CocCommand fzf-preview.CocDefinition<CR>
+nnoremap <silent> [ff]t  :<C-u>CocCommand fzf-preview.CocTypeDefinition<CR>
+nnoremap <silent> [ff]o  :<C-u>CocCommand fzf-preview.CocOutline --add-fzf-arg=--exact --add-fzf-arg=--no-sort<CR>
+
 
