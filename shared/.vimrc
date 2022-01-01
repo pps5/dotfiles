@@ -12,6 +12,7 @@ Plug 'scrooloose/nerdtree'
 Plug 'bronson/vim-trailing-whitespace'
 Plug 'godlygeek/tabular'
 Plug 'junegunn/fzf', {'dir': '~/.fzf_bin', 'do': './install --all'}
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 
 " lang
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -108,3 +109,13 @@ nnoremap <silent> [ff]t  :<C-u>CocCommand fzf-preview.CocTypeDefinition<CR>
 nnoremap <silent> [ff]o  :<C-u>CocCommand fzf-preview.CocOutline --add-fzf-arg=--exact --add-fzf-arg=--no-sort<CR>
 
 
+""""""""""""""""""""""
+" nvim treesitter
+""""""""""""""""""""""
+lua <<EOF
+require('nvim-treesitter.configs').setup {
+  highlight = {
+    enable = true,
+  },
+}
+EOF
