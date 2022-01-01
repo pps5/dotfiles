@@ -32,6 +32,7 @@ set autoread
 set hidden
 set showcmd
 set clipboard=unnamed
+set mouse=a
 autocmd BufWritePre * :FixWhitespace
 
 cnoremap <c-x> <c-r>=expand('%:p')<cr>
