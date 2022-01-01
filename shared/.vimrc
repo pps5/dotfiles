@@ -84,18 +84,24 @@ endif
 """"""""""""""""""""""
 " coc.nvim
 """"""""""""""""""""""
-let g:coc_global_extensions = ['coc-git', 'coc-fzf-preview', 'coc-lists']
+let g:coc_global_extensions = ['coc-git', 'coc-fzf-preview', 'coc-lists', 'coc-pairs']
 
 let g:mapleader = "\<Space>"
+nnoremap [dev]    <Nop>
+xnoremap [dev]    <Nop>
+nmap     m        [dev]
+xmap     m        [dev]
 nnoremap [ff]     <Nop>
 xnoremap [ff]     <Nop>
 nmap     z        [ff]
 xmap     z        [ff]
 
+nmap     <silent> [dev]rn <Plug>(coc-rename)
+nmap     <silent> [dev]a  <Plug>(coc-codeaction-selected)iw
+
 """"""""""""""""""""""
 " fzf-preview
 """"""""""""""""""""""
-
 nnoremap <silent> <C-p>  :<C-u>CocCommand fzf-preview.FromResources buffer project_mru project<CR>
 nnoremap <silent> [ff]s  :<C-u>CocCommand fzf-preview.GitStatus<CR>
 nnoremap <silent> [ff]gg :<C-u>CocCommand fzf-preview.GitActions<CR>
@@ -107,7 +113,6 @@ nnoremap <silent> [ff]q  :<C-u>CocCommand fzf-preview.CocCurrentDiagnostics<CR>
 nnoremap <silent> [ff]r  :<C-u>CocCommand fzf-preview.CocReferences<CR>
 nnoremap <silent> [ff]d  :<C-u>CocCommand fzf-preview.CocDefinition<CR>
 nnoremap <silent> [ff]t  :<C-u>CocCommand fzf-preview.CocTypeDefinition<CR>
-nnoremap <silent> [ff]o  :<C-u>CocCommand fzf-preview.CocOutline --add-fzf-arg=--exact --add-fzf-arg=--no-sort<CR>
 
 
 """"""""""""""""""""""
