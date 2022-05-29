@@ -46,7 +46,7 @@ set smartindent
 set showmatch
 set laststatus=2
 set wildmode=list:longest
-colorscheme gruvbox-material
+colorscheme nord
 syntax enable
 
 """"""""""""""""""""""
@@ -84,7 +84,7 @@ endif
 """"""""""""""""""""""
 " coc.nvim
 """"""""""""""""""""""
-let g:coc_global_extensions = ['coc-git', 'coc-fzf-preview', 'coc-lists', 'coc-pairs']
+let g:coc_global_extensions = ['coc-fzf-preview', 'coc-lists', 'coc-pairs']
 
 let g:mapleader = "\<Space>"
 nnoremap [dev]    <Nop>
@@ -96,16 +96,28 @@ xnoremap [ff]     <Nop>
 nmap     z        [ff]
 xmap     z        [ff]
 
-nmap     <silent> [dev]rn <Plug>(coc-rename)
-nmap     <silent> [dev]a  <Plug>(coc-codeaction-selected)iw
+nmap     <silent> [dev]rn  <Plug>(coc-rename)
+nmap     <silent> [dev]a   <Plug>(coc-codeaction-selected)iw
+nmap     <silent> [dev]fo  :<C-u>CocCommand editor.action.formatDocument<CR>
+nmap     <silent> [dev]n   :<C-u>NERDTreeToggle<CR>
+nmap     <silent> [dev]df   <Plug>(coc-definition)
+
+" Use K to show documentation in preview window.
+nnoremap <silent> K :call ShowDocumentation()<CR>
+
+function! ShowDocumentation()
+  if CocAction('hasProvider', 'hover')
+    call CocActionAsync('doHover')
+  else
+    call feedkeys('K', 'in')
+  endif
+endfunction
 
 """"""""""""""""""""""
 " fzf-preview
 """"""""""""""""""""""
 nnoremap <silent> <C-p>  :<C-u>CocCommand fzf-preview.FromResources buffer project_mru project<CR>
-nnoremap <silent> [ff]s  :<C-u>CocCommand fzf-preview.GitStatus<CR>
-nnoremap <silent> [ff]gg :<C-u>CocCommand fzf-preview.GitActions<CR>
-nnoremap <silent> [ff]b  :<C-u>CocCommand fzf-preview.Buffers<CR>
+nnoremap <silent> <C-n>  :<C-u>CocCommand fzf-preview.Buffers<CR>
 nnoremap          [ff]f  :<C-u>CocCommand fzf-preview.ProjectGrep --add-fzf-arg=--exact --add-fzf-arg=--no-sort<Space>
 xnoremap          [ff]f  "sy:CocCommand fzf-preview.ProjectGrep --add-fzf-arg=--exact --add-fzf-arg=--no-sort<Space>-F<Space>"<C-r>=substitute(substitute(@s, '\n', '', 'g'), '/', '\\/', 'g')<CR>"
 
@@ -113,6 +125,7 @@ nnoremap <silent> [ff]q  :<C-u>CocCommand fzf-preview.CocCurrentDiagnostics<CR>
 nnoremap <silent> [ff]r  :<C-u>CocCommand fzf-preview.CocReferences<CR>
 nnoremap <silent> [ff]d  :<C-u>CocCommand fzf-preview.CocDefinition<CR>
 nnoremap <silent> [ff]t  :<C-u>CocCommand fzf-preview.CocTypeDefinition<CR>
+nnoremap <silent> [ff]c  :<C-u>CocCommand<CR>
 
 
 """"""""""""""""""""""
