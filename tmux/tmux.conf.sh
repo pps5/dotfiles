@@ -1,7 +1,6 @@
 #!/bin/zsh
 
 cd "$(dirname "$0")"
-DOTFILES=$(pwd -P)
 
 if [ $(uname) = 'Darwin' ]; then
     COPY_COMMAND='pbcopy'
@@ -9,7 +8,7 @@ else
     COPY_COMMAND="set -g @override_copy_command 'xsel'"
 fi
 
-cat > $DOTFILES/.tmux.conf << EOS -  $DOTFILES/shared/.tmux.conf
+cat > ~/.tmux.conf << EOS - tmux.conf
 #------------------------------------
 # plugins
 #------------------------------------

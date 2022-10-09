@@ -11,8 +11,7 @@ if [ -e $HOME/.tmux/plugins/tpm ]; then
     rm -rf $HOME/.tmux/plugins/tpm
 fi
 git clone https://github.com/tmux-plugins/tpm $HOME/.tmux/plugins/tpm
-zsh $DOTFILES/tmux.conf.sh
-ln -snf $DOTFILES/.tmux.conf $HOME/.tmux.conf
+zsh $DOTFILES/tmux/tmux.conf.sh
 
 # nvim
 if [ -e $HOME/.config/nvim ]; then
