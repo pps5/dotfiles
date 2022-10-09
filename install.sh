@@ -4,7 +4,7 @@ cd "$(dirname "$0")"
 DOTFILES=$(pwd -P)
 
 # zshrc
-ln -snf $DOTFILES/shared/.zshrc $HOME/.zshrc
+cp zshrc $HOME/.zshrc
 
 # tmux
 if [ -e $HOME/.tmux/plugins/tpm ]; then
