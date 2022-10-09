@@ -27,6 +27,5 @@ curl -fLo $HOME/.config/nvim/autoload/plug.vim --create-dirs \
 nvim +PlugInstall +qall
 
 # gitconfig
-zsh $DOTFILES/gitconfig.sh
-ln -snf $DOTFILES/shared/.gitconfig $HOME/.gitconfig
+zsh $DOTFILES/gitconfig/gitconfig.sh
 

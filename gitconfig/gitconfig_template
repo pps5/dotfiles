@@ -1,5 +1,5 @@
 [user]
-    email = n2.jima@gmail.com
+    email = {{EMAIL}}
     name = Naoki Nakajima
 
 [alias]
