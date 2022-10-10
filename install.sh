@@ -4,7 +4,7 @@ cd "$(dirname "$0")"
 DOTFILES=$(pwd -P)
 
 # zshrc
-cp zshrc $HOME/.zshrc
+cp $DOTFILES/zshrc $HOME/.zshrc
 
 # tmux
 if [ -e $HOME/.tmux/plugins/tpm ]; then
@@ -19,11 +19,8 @@ if [ -e $HOME/.config/nvim ]; then
 fi
 
 mkdir -p $HOME/.config/nvim
-ln -snf $DOTFILES/shared/.vimrc $HOME/.config/nvim/init.vim
-
-curl -fLo $HOME/.config/nvim/autoload/plug.vim --create-dirs \
-    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-nvim +PlugInstall +qall
+cp $DOTFILES/init.lua $HOME/.config/nvim/init.lua
+nvim --headless -c 'autocmd User PackerComplete quitall' -c 'PackerSync'
 
 # gitconfig
 zsh $DOTFILES/gitconfig/gitconfig.sh
