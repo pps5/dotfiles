@@ -8,9 +8,8 @@ if command -v yarn > /dev/null 2>&1; then
     export PATH=$PATH:$(yarn global bin)
 fi
 
-if [ $(uname) = 'Darwin' ]; then
-    export PATH=$PATH:$HOME/Library/Android/sdk/platform-tools/
-fi
+# Android tools
+export PATH=$PATH:$HOME/Library/Android/sdk/platform-tools/
 
 #------------------------------------------
 # History
@@ -72,25 +71,6 @@ PROMPT=$'
 %F{red}>>>>%f '
 
 #------------------------------------------
-# Aliases
-#------------------------------------------
-# cli
-alias ls="ls -p"
-alias la="ls -a"
-alias ll="ls -l"
-alias lla="ls -al"
-alias cdp="cd ../"
-alias cdpp="cd ../../"
-
-# Global aliases
-alias -g L='| less'
-alias -g H='| head'
-alias -g T='| tail'
-alias -g M='| more'
-alias -g G='| grep'
-alias -g GI='| grep -i'
-
-#------------------------------------------
 # others
 #------------------------------------------
 # disable spell check
@@ -98,9 +78,3 @@ unsetopt correctall
 # reset keybind
 bindkey -e
 
-if command -v anyenv > /dev/null 2>&1; then
-    eval "$(anyenv init -)"
-fi
-
-
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
